@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>LinkedIn AI Agent — Login</title>
+  </head>
+  <body>
+    <h1>LinkedIn AI Agent</h1>
+    <form id="loginForm">
+      <label>Phone (E.164): <input type="text" id="phone" placeholder="+9199..." required /></label>
+      <button id="signin">Sign in with LinkedIn</button>
+    </form>
+
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const phone = document.getElementById('phone').value.trim();
+        const state = encodeURIComponent(JSON.stringify({ phone }));
+        window.location.href = `/linkedin/auth?state=${state}`;
+      });
+    </script>
+  </body>
+</html>
